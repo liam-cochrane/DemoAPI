@@ -203,6 +203,16 @@
             "rid": "win"
           }
         }
+      },
+      "Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Domain.dll": {}
+        }
       }
     }
   },
@@ -576,10 +586,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Domain/1.0.0": {
+      "type": "project",
+      "path": "../Domain/Domain.csproj",
+      "msbuildProject": "../Domain/Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "Domain >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 5.0.0",
       "Microsoft.AspNetCore.Authentication.OpenIdConnect >= 5.0.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
@@ -611,7 +627,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "E:\\Documents\\Code\\DemoAPI\\DemoAPI\\Domain\\Domain.csproj": {
+              "projectPath": "E:\\Documents\\Code\\DemoAPI\\DemoAPI\\Domain\\Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

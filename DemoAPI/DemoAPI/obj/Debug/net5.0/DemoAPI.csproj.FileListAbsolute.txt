@@ -24,7 +24,6 @@ E:\Documents\Code\DemoAPI\DemoAPI\DemoAPI\obj\Debug\net5.0\DemoAPI.GeneratedMSBu
 E:\Documents\Code\DemoAPI\DemoAPI\DemoAPI\obj\Debug\net5.0\DemoAPI.AssemblyInfoInputs.cache
 E:\Documents\Code\DemoAPI\DemoAPI\DemoAPI\obj\Debug\net5.0\DemoAPI.AssemblyInfo.cs
 E:\Documents\Code\DemoAPI\DemoAPI\DemoAPI\obj\Debug\net5.0\DemoAPI.csproj.CoreCompileInputs.cache
-E:\Documents\Code\DemoAPI\DemoAPI\DemoAPI\obj\Debug\net5.0\DemoAPI.MvcApplicationPartsAssemblyInfo.cs
 E:\Documents\Code\DemoAPI\DemoAPI\DemoAPI\obj\Debug\net5.0\DemoAPI.MvcApplicationPartsAssemblyInfo.cache
 E:\Documents\Code\DemoAPI\DemoAPI\DemoAPI\obj\Debug\net5.0\staticwebassets\DemoAPI.StaticWebAssets.Manifest.cache
 E:\Documents\Code\DemoAPI\DemoAPI\DemoAPI\obj\Debug\net5.0\staticwebassets\DemoAPI.StaticWebAssets.xml
@@ -35,3 +34,5 @@ E:\Documents\Code\DemoAPI\DemoAPI\DemoAPI\obj\Debug\net5.0\DemoAPI.dll
 E:\Documents\Code\DemoAPI\DemoAPI\DemoAPI\obj\Debug\net5.0\ref\DemoAPI.dll
 E:\Documents\Code\DemoAPI\DemoAPI\DemoAPI\obj\Debug\net5.0\DemoAPI.pdb
 E:\Documents\Code\DemoAPI\DemoAPI\DemoAPI\obj\Debug\net5.0\DemoAPI.genruntimeconfig.cache
+E:\Documents\Code\DemoAPI\DemoAPI\DemoAPI\bin\Debug\net5.0\Domain.dll
+E:\Documents\Code\DemoAPI\DemoAPI\DemoAPI\bin\Debug\net5.0\Domain.pdb
