@@ -35,10 +35,10 @@ namespace DemoAPI.Areas.People.Controllers
         }
 
         [HttpGet]
-        [Route("{companyId:long}")]
-        public ActionResult<PersonDetailsModel> Details(long companyId)
+        [Route("{personId:long}")]
+        public ActionResult<PersonDetailsModel> Details(long personId)
         {
-            var response = manager.GetDetailsModel(companyId);
+            var response = manager.GetDetailsModel(personId);
 
             if (response == null)
             {
@@ -68,12 +68,12 @@ namespace DemoAPI.Areas.People.Controllers
         }
 
         [HttpPut]
-        [Route("{companyId:long}")]
-        public ActionResult Edit(long companyId, PersonEditModel model)
+        [Route("{personId:long}")]
+        public ActionResult Edit(long personId, PersonEditModel model)
         {
             try
             {
-                manager.SaveEditModel(companyId, model);
+                manager.SaveEditModel(personId, model);
 
                 return Ok();
             }
@@ -85,12 +85,12 @@ namespace DemoAPI.Areas.People.Controllers
         }
 
         [HttpDelete]
-        [Route("{companyId:long}")]
-        public ActionResult Delete(long companyId)
+        [Route("{personId:long}")]
+        public ActionResult Delete(long personId)
         {
             try
             {
-                manager.Delete(companyId);
+                manager.Delete(personId);
 
                 return Ok();
             }
