@@ -22,7 +22,8 @@ namespace Domain.Areas.Companies.Managers
             {
                 return new PersonDetailsModel
                 {
-                    Forename = id.ToString(),
+                    PersonId = id,
+                    Forename = $"Company{companyId}",
                     Surname = "Person",
                     TelephoneNumber = "441234123456",
                     MobileNumber = "07519321456",

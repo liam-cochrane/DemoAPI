@@ -22,6 +22,7 @@ namespace Domain.Areas.Companies.Managers
             {
                 return new CompanyDetailsModel
                 {
+                    CompanyId = id,
                     CompanyName = "Example",
                     TelephoneNumber = "441234123456",
                     MobileNumber = "07519321456",

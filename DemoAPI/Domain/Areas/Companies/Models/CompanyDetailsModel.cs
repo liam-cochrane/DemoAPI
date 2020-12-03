@@ -6,6 +6,8 @@ namespace Domain.Areas.Companies.Models
 {
     public class CompanyDetailsModel
     {
+        public long CompanyId { get; set; }
+
         public string CompanyName { get; set; }
 
         public string TelephoneNumber { get; set; }

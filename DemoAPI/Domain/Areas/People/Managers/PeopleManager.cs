@@ -22,6 +22,7 @@ namespace Domain.Areas.People.Managers
             {
                 return new PersonDetailsModel
                 {
+                    PersonId = id,
                     Forename = "Example",
                     Surname = "Person",
                     TelephoneNumber = "441234123456",

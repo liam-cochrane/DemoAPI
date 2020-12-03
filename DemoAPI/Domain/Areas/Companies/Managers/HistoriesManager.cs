@@ -22,7 +22,8 @@ namespace Domain.Areas.Companies.Managers
             {
                 return new HistoryDetailsModel
                 {
-                    Description = id.ToString(),
+                    HistoryId = id,
+                    Description = $"Example History {id} from company {companyId}",
                     TimeStamp = DateTime.Now,
                     UserId = 123456
                 };
