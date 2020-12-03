@@ -8,4 +8,8 @@
     <Folder Include="Areas\Histories\Managers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Data.Mock\Data.Mock.csproj" />
+  </ItemGroup>
+
 </Project>
