@@ -19,5 +19,7 @@ namespace Data.Mock.Objects
         public string Email { get; set; }
 
         public string JobTitle { get; set; }
+
+        public long CompanyId { get; set; }
     }
 }

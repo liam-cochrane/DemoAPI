@@ -74,7 +74,7 @@ namespace Domain.Areas.People.Managers
                     TelephoneNumber = item.TelephoneNumber,
                     MobileNumber = item.MobileNumber,
                     Email = item.Email,
-                    JobTitle = item.JobTitle
+                    JobTitle = item.JobTitle,
                 };
             }
         }

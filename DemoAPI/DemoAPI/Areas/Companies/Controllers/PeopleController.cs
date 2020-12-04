@@ -29,7 +29,7 @@ namespace DemoAPI.Areas.Companies.Controllers
             var search = new PersonSearchModel();
             search.Term = searchTerm;
 
-            var response = manager.GetIndexModel(search);
+            var response = manager.GetIndexModel(companyId, search);
 
             return Ok(response);
         }

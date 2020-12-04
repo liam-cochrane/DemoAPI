@@ -26,7 +26,8 @@ namespace Data.Mock
                         Email = "david@example.com",
                         TelephoneNumber = "01449784213",
                         MobileNumber = "075194312678",
-                        JobTitle = "Shopfloor Assistant"
+                        JobTitle = "Shopfloor Assistant",
+                        CompanyId = 876432
                     });
                     _people.Add(new Person
                     {
@@ -36,7 +37,8 @@ namespace Data.Mock
                         Email = "barry@example.com",
                         TelephoneNumber = "01449123825",
                         MobileNumber = "07519123724",
-                        JobTitle = "Bishop"
+                        JobTitle = "Bishop",
+                        CompanyId = 123459
                     });
                     _people.Add(new Person
                     {
@@ -46,7 +48,8 @@ namespace Data.Mock
                         Email = "amanda@example.com",
                         TelephoneNumber = "013457432",
                         MobileNumber = "07519123635",
-                        JobTitle = "Clerk"
+                        JobTitle = "Clerk",
+                        CompanyId = 123452
                     });
                 }
 
@@ -64,8 +67,29 @@ namespace Data.Mock
                     _companies = new List<Company>();
                     _companies.Add(new Company
                     {
-                        Id = 123456,
-                        CompanyName = "David",
+                        Id = 876432,
+                        CompanyName = "ABC Plumbing",
+                        TelephoneNumber = "01449784213",
+                        MobileNumber = "075194312678"
+                    });
+                    _companies.Add(new Company
+                    {
+                        Id = 213483,
+                        CompanyName = "ABC Plumbing",
+                        TelephoneNumber = "01449784213",
+                        MobileNumber = "075194312678"
+                    });
+                    _companies.Add(new Company
+                    {
+                        Id = 123459,
+                        CompanyName = "ABC Plumbing",
+                        TelephoneNumber = "01449784213",
+                        MobileNumber = "075194312678"
+                    });
+                    _companies.Add(new Company
+                    {
+                        Id = 123452,
+                        CompanyName = "ABC Plumbing",
                         TelephoneNumber = "01449784213",
                         MobileNumber = "075194312678"
                     });
