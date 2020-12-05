@@ -13,6 +13,9 @@ namespace Domain.Areas.People.Models
         [Required]
         public string Surname { get; set; }
 
+        [Required]
+        public long CompanyId { get; set; }
+
         [Phone]
         public string TelephoneNumber { get; set; }
 

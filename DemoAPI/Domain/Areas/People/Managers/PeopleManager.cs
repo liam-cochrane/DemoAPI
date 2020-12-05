@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Data.Mock;
+using Data.Mock.Objects;
 using System.Linq;
 
 namespace Domain.Areas.People.Managers
@@ -79,6 +80,24 @@ namespace Domain.Areas.People.Managers
             }
         }
 
+        public void SaveCreateModel(PersonCreateModel model)
+        {
+            var item = new Person
+            {
+                CompanyId = model.CompanyId,
+                Forename = model.Forename,
+                Surname = model.Surname,
+                Email = model.Email,
+                JobTitle = model.JobTitle,
+                MobileNumber = model.MobileNumber,
+                TelephoneNumber = model.TelephoneNumber
+            };
+
+            dc.People.Add(item);
+
+            //dc.Save();
+        }
+
         public void SaveEditModel(long id, PersonEditModel model)
         {
             var item = dc.People.Find(X => X.Id == id);
@@ -88,13 +107,16 @@ namespace Domain.Areas.People.Managers
             }
             else
             {
-                throw new NotImplementedException(); 
-            }
-        }
+                item.CompanyId = model.CompanyId;
+                item.Forename = model.Forename;
+                item.Surname = model.Surname;
+                item.Email = model.Email;
+                item.JobTitle = model.JobTitle;
+                item.MobileNumber = model.MobileNumber;
+                item.TelephoneNumber = model.TelephoneNumber;
 
-        public void SaveCreateModel(PersonCreateModel model)
-        {
-            throw new NotImplementedException();
+                //dc.Save();
+            }
         }
 
         public void Delete(long id)
@@ -106,7 +128,9 @@ namespace Domain.Areas.People.Managers
             }
             else
             {
-                throw new NotImplementedException();
+                dc.People.Remove(item);
+
+                //dc.Save();
             }
         }
     }

@@ -11,5 +11,9 @@ namespace Data.Mock.Objects
         public string Description { get; set; }
 
         public DateTime TimeStamp { get; set; }
+
+        public string LinkType { get; set; }
+
+        public long LinkId { get; set; }
     }
 }

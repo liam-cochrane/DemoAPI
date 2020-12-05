@@ -75,21 +75,21 @@ namespace Data.Mock
                     _companies.Add(new Company
                     {
                         Id = 213483,
-                        CompanyName = "ABC Plumbing",
+                        CompanyName = "Testing Ltd",
                         TelephoneNumber = "01449784213",
                         MobileNumber = "075194312678"
                     });
                     _companies.Add(new Company
                     {
                         Id = 123459,
-                        CompanyName = "ABC Plumbing",
+                        CompanyName = "Example Company",
                         TelephoneNumber = "01449784213",
                         MobileNumber = "075194312678"
                     });
                     _companies.Add(new Company
                     {
                         Id = 123452,
-                        CompanyName = "ABC Plumbing",
+                        CompanyName = "Carefree Cars",
                         TelephoneNumber = "01449784213",
                         MobileNumber = "075194312678"
                     });
@@ -97,7 +97,45 @@ namespace Data.Mock
 
                 return _companies;
             }
+        }
+        public List<History> Histories
+        {
+            get
+            {
+                if (_histories == null)
+                {
+                    _histories = new List<History>();
+                    _histories.Add(new History
+                    {
 
+                        Id = 678432,
+                        LinkId = 876432,
+                        LinkType = "Company",
+                        Description = "Company Created",
+                        TimeStamp = new DateTime(2017, 01, 01)
+                    });
+                    _histories.Add(new History
+                    {
+
+                        Id = 678432,
+                        LinkId = 876432,
+                        LinkType = "Company",
+                        Description = "Company Name changed from \"Previous Company Name\" to \"ABC Plumbing\"",
+                        TimeStamp = new DateTime(2018, 01, 01)
+                    });
+                    _histories.Add(new History
+                    {
+
+                        Id = 678432,
+                        LinkId = 876432,
+                        LinkType = "Company",
+                        Description = "Telephone number changed",
+                        TimeStamp = new DateTime(2019, 01, 01)
+                    });
+                }
+
+                return _histories;
+            }
         }
     }
 }
