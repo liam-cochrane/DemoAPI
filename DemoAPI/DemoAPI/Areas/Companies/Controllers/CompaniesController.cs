@@ -6,9 +6,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Domain.Areas.Companies.Managers;
 using Domain.Areas.Companies.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DemoAPI.Areas.Companies.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class CompaniesController : ControllerBase
@@ -42,7 +44,7 @@ namespace DemoAPI.Areas.Companies.Controllers
 
             if (response == null)
             {
-                return BadRequest();
+                return NotFound();
             }
             else
             {
@@ -56,9 +58,9 @@ namespace DemoAPI.Areas.Companies.Controllers
         {
             try
             {
-                manager.SaveCreateModel(model);
+                var id = manager.SaveCreateModel(model);
 
-                return Ok();
+                return Created("[controller]/" + id, new Object());
             }
             catch (Exception ex)
             {

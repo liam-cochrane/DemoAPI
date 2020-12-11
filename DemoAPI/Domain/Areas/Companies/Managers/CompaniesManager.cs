@@ -37,9 +37,9 @@ namespace Domain.Areas.Companies.Managers
 
         }
 
-        public void SaveCreateModel(CompanyCreateModel model)
+        public long SaveCreateModel(CompanyCreateModel model)
         {
-
+            return 0;
         }
 
         public void Delete(long id)
