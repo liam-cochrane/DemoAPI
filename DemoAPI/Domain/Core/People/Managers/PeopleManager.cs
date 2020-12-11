@@ -84,6 +84,7 @@ namespace Domain.Areas.People.Managers
         {
             var item = new Person
             {
+                Id = 890123, //TODO generate Ids
                 CompanyId = model.CompanyId,
                 Forename = model.Forename,
                 Surname = model.Surname,
@@ -97,10 +98,7 @@ namespace Domain.Areas.People.Managers
 
             //dc.Save();
 
-            //TODO remove me later
-            long fakeId = 12345;
-
-            return fakeId;
+            return item.Id;
         }
 
         public void SaveEditModel(long id, PersonEditModel model)

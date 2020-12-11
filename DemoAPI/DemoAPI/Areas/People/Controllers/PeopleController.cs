@@ -45,7 +45,7 @@ namespace DemoAPI.Areas.People.Controllers
 
             if (response == null)
             {
-                return BadRequest();
+                return NotFound();
             }
             else
             {
