@@ -1,4 +1,5 @@
-﻿using Domain.Core.Companies.Models;
+﻿using Data.Mock;
+using Domain.Core.Companies.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +8,14 @@ namespace Domain.Core.Companies.Managers
 {
     public class CompaniesManager
     {
-        public IEnumerable<CompanyDetailsModel> GetIndexModel(CompanySearchModel model)
+        private readonly DataContext dc;
+
+        public CompaniesManager()
+        {
+            dc = new DataContext();
+        }
+
+        public IEnumerable<CompanyDetailsModel> GetIndexModel(CompanySearchModel search)
         {
             throw new NotImplementedException();
         }
