@@ -1,9 +1,9 @@
-﻿using Domain.Areas.Companies.Models;
+﻿using Domain.Core.Companies.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain.Areas.Companies.Managers
+namespace Domain.Core.Companies.Managers
 {
     public class CompaniesManager
     {

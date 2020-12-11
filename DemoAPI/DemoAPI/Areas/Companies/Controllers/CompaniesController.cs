@@ -4,8 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Domain.Areas.Companies.Managers;
-using Domain.Areas.Companies.Models;
+using Domain.Core.Companies.Managers;
+using Domain.Core.Companies.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DemoAPI.Areas.Companies.Controllers
 {
@@ -23,7 +24,6 @@ namespace DemoAPI.Areas.Companies.Controllers
         }
 
         [HttpGet]
-        [Route("")]
         public ActionResult<IEnumerable<CompanyDetailsModel>> Index(string searchTerm = null)
         {
             var search = new CompanySearchModel();
@@ -34,8 +34,7 @@ namespace DemoAPI.Areas.Companies.Controllers
             return Ok(response);
         }
 
-        [HttpGet]
-        [Route("{companyId:long}")]
+        [HttpGet("{companyId:long}")]
         public ActionResult<CompanyDetailsModel> Details(long companyId)
         {
             var response = manager.GetDetailsModel(companyId);
@@ -51,7 +50,6 @@ namespace DemoAPI.Areas.Companies.Controllers
         }
 
         [HttpPost]
-        [Route("")]
         public ActionResult Create(CompanyCreateModel model)
         {
             try
@@ -62,13 +60,11 @@ namespace DemoAPI.Areas.Companies.Controllers
             }
             catch (Exception ex)
             {
-                //HANDLE EXCEPTIONS
-                throw;
+                return Problem();
             }
         }
 
-        [HttpPut]
-        [Route("{companyId:long}")]
+        [HttpPut("{companyId:long}")]
         public ActionResult Edit(long companyId, CompanyEditModel model)
         {
             try
@@ -77,15 +73,13 @@ namespace DemoAPI.Areas.Companies.Controllers
 
                 return Ok();
             }
-            catch (Exception ex)
+            catch (KeyNotFoundException)
             {
-                //HANDLE EXCEPTIONS
-                throw;
+                return NotFound();
             }
         }
 
-        [HttpDelete]
-        [Route("{companyId:long}")]
+        [HttpDelete("{companyId:long}")]
         public ActionResult Delete(long companyId)
         {
             try
@@ -94,10 +88,9 @@ namespace DemoAPI.Areas.Companies.Controllers
 
                 return Ok();
             }
-            catch (Exception ex)
+            catch (KeyNotFoundException)
             {
-                //HANDLE EXCEPTIONS
-                throw;
+                return NotFound();
             }
         }
     }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Domain.Areas.People.Managers;
 using Domain.Areas.People.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DemoAPI.Areas.People.Controllers
 {
@@ -23,7 +24,6 @@ namespace DemoAPI.Areas.People.Controllers
         }
 
         [HttpGet]
-        [Route("")]
         public ActionResult<IEnumerable<PersonDetailsModel>> Index(string searchTerm = null)
         {
             var search = new PersonSearchModel();
@@ -34,8 +34,7 @@ namespace DemoAPI.Areas.People.Controllers
             return Ok(response);
         }
 
-        [HttpGet]
-        [Route("{personId:long}")]
+        [HttpGet("{personId:long}")]
         public ActionResult<PersonDetailsModel> Details(long personId)
         {
             var response = manager.GetDetailsModel(personId);
@@ -51,7 +50,6 @@ namespace DemoAPI.Areas.People.Controllers
         }
 
         [HttpPost]
-        [Route("")]
         public ActionResult Create(PersonCreateModel model)
         {
             try
@@ -62,13 +60,11 @@ namespace DemoAPI.Areas.People.Controllers
             }
             catch (Exception ex)
             {
-                //HANDLE EXCEPTIONS
-                throw;
+                return Problem();
             }
         }
 
-        [HttpPut]
-        [Route("{personId:long}")]
+        [HttpPut("{personId:long}")]
         public ActionResult Edit(long personId, PersonEditModel model)
         {
             try
@@ -77,15 +73,13 @@ namespace DemoAPI.Areas.People.Controllers
 
                 return Ok();
             }
-            catch (Exception ex)
+            catch (KeyNotFoundException)
             {
-                //HANDLE EXCEPTIONS
-                throw;
+                return NotFound();
             }
         }
 
-        [HttpDelete]
-        [Route("{personId:long}")]
+        [HttpDelete("{personId:long}")]
         public ActionResult Delete(long personId)
         {
             try
@@ -94,10 +88,9 @@ namespace DemoAPI.Areas.People.Controllers
 
                 return Ok();
             }
-            catch (Exception ex)
+            catch (KeyNotFoundException)
             {
-                //HANDLE EXCEPTIONS
-                throw;
+                return NotFound();
             }
         }
     }

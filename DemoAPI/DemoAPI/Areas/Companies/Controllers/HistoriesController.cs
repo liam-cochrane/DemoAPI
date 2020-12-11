@@ -23,7 +23,6 @@ namespace DemoAPI.Areas.Companies.Controllers
         }
 
         [HttpGet]
-        [Route("")]
         public ActionResult<IEnumerable<HistoryDetailsModel>> Index(long companyId, string searchTerm = null)
         {
             var search = new HistorySearchModel();
@@ -34,8 +33,7 @@ namespace DemoAPI.Areas.Companies.Controllers
             return Ok(response);
         }
 
-        [HttpGet]
-        [Route("{historyId:long}")]
+        [HttpGet("{historyId:long}")]
         public ActionResult<HistoryDetailsModel> Details(long companyId, long historyId)
         {
             var response = manager.GetDetailsModel(companyId, historyId);
