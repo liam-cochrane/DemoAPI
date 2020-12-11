@@ -80,7 +80,7 @@ namespace Domain.Areas.People.Managers
             }
         }
 
-        public void SaveCreateModel(PersonCreateModel model)
+        public long SaveCreateModel(PersonCreateModel model)
         {
             var item = new Person
             {
@@ -96,6 +96,10 @@ namespace Domain.Areas.People.Managers
             dc.People.Add(item);
 
             //dc.Save();
+
+            long id = 123456;
+
+            return id;
         }
 
         public void SaveEditModel(long id, PersonEditModel model)

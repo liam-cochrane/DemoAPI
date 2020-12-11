@@ -34,8 +34,7 @@ namespace DemoAPI.Areas.Employees.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost]
-        [Route("Authenticate")]
+        [HttpPost("Authenticate")]
         public ActionResult Authenticate()
         {
             var employee = new { Id = 123456 };

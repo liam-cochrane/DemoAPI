@@ -6,9 +6,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Domain.Areas.Companies.Managers;
 using Domain.Areas.Histories.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DemoAPI.Areas.Companies.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("Companies/{companyId:long}/[controller]/")]
     public class HistoriesController : ControllerBase
@@ -23,7 +25,6 @@ namespace DemoAPI.Areas.Companies.Controllers
         }
 
         [HttpGet]
-        [Route("")]
         public ActionResult<IEnumerable<HistoryDetailsModel>> Index(long companyId, string searchTerm = null)
         {
             var search = new HistorySearchModel();
@@ -34,8 +35,7 @@ namespace DemoAPI.Areas.Companies.Controllers
             return Ok(response);
         }
 
-        [HttpGet]
-        [Route("{historyId:long}")]
+        [HttpGet("{historyId:long}")]
         public ActionResult<HistoryDetailsModel> Details(long companyId, long historyId)
         {
             var response = manager.GetDetailsModel(companyId, historyId);

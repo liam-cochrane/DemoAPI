@@ -6,9 +6,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Domain.Areas.People.Managers;
 using Domain.Areas.People.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace DemoAPI.Areas.People.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class PeopleController : ControllerBase
@@ -23,7 +26,8 @@ namespace DemoAPI.Areas.People.Controllers
         }
 
         [HttpGet]
-        [Route("")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<IEnumerable<PersonDetailsModel>> Index(string searchTerm = null)
         {
             var search = new PersonSearchModel();
@@ -34,15 +38,17 @@ namespace DemoAPI.Areas.People.Controllers
             return Ok(response);
         }
 
-        [HttpGet]
-        [Route("{personId:long}")]
+        [HttpGet("{personId:long}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<PersonDetailsModel> Details(long personId)
         {
             var response = manager.GetDetailsModel(personId);
 
             if (response == null)
             {
-                return BadRequest();
+                return NotFound();
             }
             else
             {
@@ -51,14 +57,17 @@ namespace DemoAPI.Areas.People.Controllers
         }
 
         [HttpPost]
-        [Route("")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult Create(PersonCreateModel model)
         {
             try
             {
-                manager.SaveCreateModel(model);
+                var id = manager.SaveCreateModel(model);
 
-                return Ok();
+                var responseModel = manager.GetDetailsModel(id);
+
+                return CreatedAtAction(nameof(Details), new { personId = id }, responseModel);
             }
             catch (Exception ex)
             {
@@ -67,8 +76,10 @@ namespace DemoAPI.Areas.People.Controllers
             }
         }
 
-        [HttpPut]
-        [Route("{personId:long}")]
+        [HttpPut("{personId:long}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult Edit(long personId, PersonEditModel model)
         {
             try
@@ -77,27 +88,26 @@ namespace DemoAPI.Areas.People.Controllers
 
                 return Ok();
             }
-            catch (Exception ex)
+            catch (KeyNotFoundException)
             {
-                //HANDLE EXCEPTIONS
-                throw;
+                return NotFound();
             }
         }
 
-        [HttpDelete]
-        [Route("{personId:long}")]
+        [HttpDelete("{personId:long}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult Delete(long personId)
         {
             try
             {
                 manager.Delete(personId);
 
-                return Ok();
+                return NoContent();
             }
-            catch (Exception ex)
+            catch (KeyNotFoundException)
             {
-                //HANDLE EXCEPTIONS
-                throw;
+                return NotFound();
             }
         }
     }

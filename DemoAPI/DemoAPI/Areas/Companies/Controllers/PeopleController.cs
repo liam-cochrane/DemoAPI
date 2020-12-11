@@ -6,9 +6,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Domain.Areas.Companies.Managers;
 using Domain.Areas.People.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DemoAPI.Areas.Companies.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("Companies/{companyId:long}/[controller]/")]
     public class PeopleController : ControllerBase
@@ -23,7 +25,6 @@ namespace DemoAPI.Areas.Companies.Controllers
         }
 
         [HttpGet]
-        [Route("")]
         public ActionResult<IEnumerable<PersonDetailsModel>> Index(long companyId, string searchTerm = null)
         {
             var search = new PersonSearchModel();
@@ -34,8 +35,7 @@ namespace DemoAPI.Areas.Companies.Controllers
             return Ok(response);
         }
 
-        [HttpGet]
-        [Route("{personId:long}")]
+        [HttpGet("{personId:long}")]
         public ActionResult<PersonDetailsModel> Details(long companyId, long personId)
         {
             var response = manager.GetDetailsModel(companyId, personId);
